@@ -29,14 +29,14 @@ const tournament = {
     {
       name: "Round of 16",
       matches: [
-        { p1: "pizza1",  p2: "pizza2",  date: "", winner: null },
-        { p1: "pizza3",  p2: "pizza4",  date: "", winner: null },
-        { p1: "pizza5",  p2: "pizza6",  date: "", winner: null },
-        { p1: "pizza7",  p2: "pizza8",  date: "", winner: null },
-        { p1: "pizza9",  p2: "pizza10", date: "", winner: null },
-        { p1: "pizza11", p2: "pizza12", date: "", winner: null },
-        { p1: "pizza13", p2: "pizza14", date: "", winner: null },
-        { p1: "pizza15", p2: "pizza16", date: "", winner: null },
+        { p1: "Hot Honey",  p2: "Mango Chutney",  date: "", winner: null },
+        { p1: "Chutney Potato",  p2: "Cheese",  date: "", winner: null },
+        { p1: "Pickle Pizza",  p2: "Orange Cream",  date: "", winner: null },
+        { p1: "Veggie",  p2: "Pepperoni",  date: "", winner: null },
+        { p1: "Samosa",  p2: "PBJ", date: "", winner: null },
+        { p1: "Strawberry Cream", p2: "Bombay", date: "", winner: null },
+        { p1: "Paneer Tika Masala", p2: "Halwa", date: "", winner: null },
+        { p1: "Tuna Melt", p2: "Papa Fiesta", date: "", winner: null },
       ],
     },
     {
