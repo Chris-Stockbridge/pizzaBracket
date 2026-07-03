@@ -29,7 +29,7 @@ const tournament = {
     {
       name: "Round of 16",
       matches: [
-        { p1: "Hot Honey",  p2: "Mango Chutney",  date: "", winner: null },
+        { p1: "Hot Hawaiian Honey",  p2: "Mango Chutney",  date: "", winner: null },
         { p1: "Chutney Potato",  p2: "Cheese",  date: "", winner: null },
         { p1: "Pickle Pizza",  p2: "Orange Cream",  date: "", winner: null },
         { p1: "Veggie",  p2: "Pepperoni",  date: "", winner: null },
