@@ -52,6 +52,49 @@ body {
   font-size: 0.85rem;
 }
 
+/* ---------- Layout toggle ---------- */
+.layout-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+}
+
+.layout-toggle-label {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 0.5rem 0 0.7rem;
+}
+
+.layout-toggle button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.layout-toggle button:hover {
+  color: var(--text);
+}
+
+.layout-toggle button.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(230, 57, 70, 0.4);
+}
+
 /* ---------- Bracket layout ---------- */
 .bracket-scroll {
   overflow-x: auto;
@@ -124,6 +167,39 @@ body {
    line handled naturally; remove stray outer borders on the very first round */
 .round-0 .game-spacer {
   border-right: 2px solid var(--line);
+}
+
+/* ---------- Split layout ---------- */
+.bracket.layout-split {
+  align-items: stretch;
+}
+
+.bracket.layout-split .side {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.bracket.layout-split .side-center {
+  min-width: 200px;
+}
+
+/* Mirror the connector geometry on the right half so lines feed inward. */
+.side-right .game-spacer {
+  border-right: none;
+  border-left: 2px solid var(--line);
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 0.5rem;
+}
+
+.side-right .match-date {
+  transform: translateX(-0.6rem);
+}
+
+/* The centered Final has no outgoing connector (Champion sits below it). */
+.game-spacer.no-line {
+  border: none;
 }
 
 /* ---------- Match date ---------- */
