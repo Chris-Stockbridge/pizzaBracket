@@ -192,7 +192,7 @@
     const fromUrl = new URLSearchParams(location.search).get("layout");
     if (fromUrl === "split" || fromUrl === "classic") return fromUrl;
     const saved = localStorage.getItem(LAYOUT_KEY);
-    return saved === "split" ? "split" : "classic";
+    return saved === "classic" ? "classic" : "split";
   }
 
   function render() {
