@@ -52,6 +52,26 @@ body {
   font-size: 0.85rem;
 }
 
+.header-links {
+  margin: 0.6rem 0 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.header-links a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.header-links a:hover {
+  text-decoration: underline;
+}
+
+.header-links span {
+  margin: 0 0.5rem;
+  color: var(--muted);
+}
+
 /* ---------- Layout toggle ---------- */
 .layout-toggle {
   display: inline-flex;
