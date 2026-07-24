@@ -67,6 +67,25 @@
   }
 
   /**
+   * Build the "Winner: X" label and optional comment shown below a
+   * decided (or commented-on) match. Returns null when there is
+   * nothing to show, so callers can skip appending it.
+   */
+  function matchInfoNode(match, top, bottom) {
+    if (match.winner == null && !match.comment) return null;
+
+    const node = el("li", "match-info");
+    if (match.winner != null) {
+      const winner = match.winner === 1 ? top : bottom;
+      node.appendChild(el("div", "match-winner", "Winner: " + winner));
+    }
+    if (match.comment) {
+      node.appendChild(el("div", "match-comment", match.comment));
+    }
+    return node;
+  }
+
+  /**
    * Build one round column (a <ul>) containing the given match indices.
    * Shared by both layouts. `matchIndices` defaults to every match in
    * the round, which is what the classic layout uses.
@@ -95,6 +114,10 @@
       col.appendChild(gameTop);
       col.appendChild(gameSpacer);
       col.appendChild(gameBottom);
+
+      const info = matchInfoNode(match, top, bottom);
+      if (info) col.appendChild(info);
+
       col.appendChild(el("li", "spacer"));
     });
 
@@ -165,6 +188,10 @@
     finalCol.appendChild(fTopGame);
     finalCol.appendChild(fSpacer);
     finalCol.appendChild(fBottomGame);
+
+    const finalInfo = matchInfoNode(finalMatch, fTop, fBottom);
+    if (finalInfo) finalCol.appendChild(finalInfo);
+
     finalCol.appendChild(el("li", "spacer"));
     finalCol.appendChild(championBox());
     finalCol.appendChild(el("li", "spacer"));
