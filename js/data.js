@@ -32,14 +32,13 @@ const tournament = {
     {
       name: "Round of 16",
       matches: [
-        { p1: "Hot Hawaiian Honey",  p2: "Mango Chutney",  date: "", winner: null, comment: "" },
+        { p1: "Hot Hawaiian Honey",  p2: "Bombay",  date: "", winner: null, comment: "" },
         { p1: "Chutney Potato",  p2: "Cheese",  date: "Jul 22, 2026", winner: 1, comment: "Fluffy potato pieces with a surprising depth of flavor beats out a Birthday party quality cheese" },
-        { p1: "Pickle Pizza",  p2: "Orange Cream",  date: "", winner: null, comment: "" },
-        { p1: "Veggie",  p2: "Pepperoni",  date: "", winner: null, comment: "" },
-        { p1: "Samosa",  p2: "PBJ", date: "", winner: null, comment: "" },
-        { p1: "Strawberry Cream", p2: "Bombay", date: "", winner: null, comment: "" },
-        { p1: "Paneer Tika Masala", p2: "Halwa", date: "", winner: null, comment: "" },
-        { p1: "Tuna Melt", p2: "Papa Fiesta", date: "", winner: null, comment: "" },
+        { p1: "Pickle Pizza",  p2: "PBJ",  date: "Aug 01, 2026", winner: 1, comment: "Pickle was great. PBJ was surprisingly good, but not good enough" },
+        { p1: "Paneer",  p2: "Mashed Potato",  date: "", winner: null, comment: "" },
+        { p1: "Tangy Veggie",  p2: "Pepperoni", date: "", winner: null, comment: "" },
+        { p1: "Veggie", p2: "Papa Fiesta", date: "", winner: null, comment: "" },
+        { p1: "Samosa", p2: "Egg", date: "", winner: null, comment: "" },
       ],
     },
     {
