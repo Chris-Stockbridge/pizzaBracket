@@ -123,22 +123,39 @@ body {
 }
 
 .bracket {
+  position: relative;
   display: flex;
   flex-direction: row;
-  min-width: max-content;
+  align-items: flex-start;
+  width: max-content;
+  min-width: 100%;
   margin: 0 auto;
   gap: 0;
+}
+
+/* Connector lines are drawn by js/bracket.js from the boxes' real
+   positions, so they sit on an overlay behind the cards. */
+.bracket-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.connector {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }
 
 .round {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex: 1 1 0;
-  min-width: 190px;
+  flex: 0 0 244px;
+  width: 244px;
 }
 
 .round-header {
@@ -148,84 +165,53 @@ body {
   font-size: 1.15rem;
   color: var(--accent-2);
   padding: 0.4rem 0.6rem;
-  margin: 0 0.6rem 0.4rem;
+  margin: 0 0.6rem 1rem;
   border-bottom: 2px solid var(--line);
   flex: 0 0 auto;
 }
 
-/* Flexible spacers center each round and create bracket geometry */
-.round .spacer {
-  flex: 1 1 auto;
-  min-height: 0.8rem;
-}
-
-.round .game {
-  padding: 0 1.2rem;
+/* Match boxes are positioned by the renderer; the body's height is
+   set to match so every column lines up. */
+.round-body {
+  position: relative;
   flex: 0 0 auto;
 }
 
-/* Connector lines: horizontal off each team, vertical joining the pair */
-.round .game-top {
-  border-bottom: 2px solid var(--line);
+.match {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 22px;
+  z-index: 1;
 }
 
-.round .game-bottom {
-  border-top: 2px solid var(--line);
+.match-slot {
+  position: relative;
 }
 
-.round .game-spacer {
-  flex: 1 1 auto;
-  min-height: 0.6rem;
-  border-right: 2px solid var(--line);
+/* The gap the fork line runs across, with the date sitting in it. */
+.match-mid {
+  min-height: 30px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 0.5rem;
-}
-
-/* First round has no incoming lines on the left, last data round no outgoing
-   line handled naturally; remove stray outer borders on the very first round */
-.round-0 .game-spacer {
-  border-right: 2px solid var(--line);
+  justify-content: center;
 }
 
 /* ---------- Split layout ---------- */
-.bracket.layout-split {
-  align-items: stretch;
-}
-
 .bracket.layout-split .side {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
-.bracket.layout-split .side-center {
-  min-width: 200px;
-}
-
-/* Mirror the connector geometry on the right half so lines feed inward. */
-.side-right .game-spacer {
-  border-right: none;
-  border-left: 2px solid var(--line);
-  justify-content: flex-start;
-  padding-right: 0;
-  padding-left: 0.5rem;
-}
-
-.side-right .match-date {
-  transform: translateX(-0.6rem);
-}
-
-/* The centered Final has no outgoing connector (Champion sits below it). */
-.game-spacer.no-line {
-  border: none;
+.bracket.layout-split .round-final {
+  flex: 0 0 236px;
+  width: 236px;
 }
 
 /* ---------- Match winner / comment ---------- */
 .match-info {
-  flex: 0 0 auto;
-  padding: 0.15rem 1.4rem 0.3rem;
+  padding: 0.35rem 0.2rem 0;
   text-align: center;
 }
 
@@ -253,7 +239,6 @@ body {
   border-radius: 999px;
   padding: 1px 8px;
   white-space: nowrap;
-  transform: translateX(0.6rem);
 }
 
 /* ---------- Team cards ---------- */
@@ -303,18 +288,21 @@ body {
 
 /* ---------- Champion ---------- */
 .champion-col {
-  min-width: 180px;
-  justify-content: center;
+  flex: 0 0 200px;
+  width: 200px;
 }
 
 .champion {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
   text-align: center;
   background: linear-gradient(160deg, #4a3115, #2a1f18);
   border: 2px dashed var(--card-border);
   border-radius: 14px;
   padding: 1.2rem 1rem;
-  margin: 0 0.8rem;
-  flex: 0 0 auto;
+  margin: 0 22px;
 }
 
 .champion.crowned {
@@ -358,4 +346,34 @@ body {
   padding: 1px 6px;
   border-radius: 5px;
   color: var(--accent-2);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .bracket-scroll {
+    padding: 1rem 0.5rem;
+  }
+
+  .round {
+    flex-basis: 196px;
+    width: 196px;
+  }
+
+  .bracket.layout-split .round-final {
+    flex-basis: 196px;
+    width: 196px;
+  }
+
+  .team {
+    font-size: 0.82rem;
+    padding: 0.45rem 0.55rem;
+  }
+
+  /* Narrow columns clip long names, so let them wrap instead. The
+     renderer measures every box, so taller cards stay lined up. */
+  .team-name {
+    white-space: normal;
+    overflow: visible;
+    line-height: 1.2;
+  }
 }
